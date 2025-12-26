@@ -34,7 +34,21 @@ ram.runtime = "50M"
 
     [install.path]
     type = "path"
-    default = "/app"
+    default = "/metabase"
+
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "select"
+    choices = ["en", "fr"]
+    default = "fr"
+
+
+    [install.nomsite]
+    ask.en = "Company or team name."
+    ask.fr = "Nom de l'entreprise ou de l'équipe."
+    type = "string"
+
 
     [install.init_main_permission]
     help.en = "If enabled, Metabase will be accessible by people who do not have an account. This can be changed later via the webadmin."
