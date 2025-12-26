@@ -18,6 +18,12 @@ ynh_script_progression "Updating NGINX web server configuration..."
 ynh_config_change_url_nginx
 
 #=================================================
+# CHANGING METABASE CONFIG FILE
+#=================================================
+ynh_delete_file_checksum --file="/etc/default/$app"
+ynh_config_add --template="metabase" --destination="/etc/default/$app"
+
+#=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
