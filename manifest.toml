@@ -5,7 +5,7 @@ name = "Metabase"
 description.en = "Web database management tool"
 description.fr = "Outil web de gestion des bases de données"
 
-version = "0.52.6~ynh2"
+version = "0.52.14~ynh2"
 
 maintainers = ["Colin Maudry"]
 
@@ -36,6 +36,16 @@ ram.runtime = "50M"
     type = "path"
     default = "/metabase"
 
+    [install.version]
+    ask.en = "Choose the version you want to install"
+    ask.fr = "Choisissez la version que vous souhaitez installer"
+    help.en = "Use Community Edition for the open source version (ARM, ARM64 and x86-64 support) or Enterprise Edition if you want to use a license (x86-64 and ARM64 support)"
+    help.fr = "Utilisez Community Edition pour la version open-source (prise en charge ARM, ARM64 et x86-64) ou Édition Enterprise si vous souhaitez utiliser une licence (prise en charge x86-64 et ARM64)"
+    type = "select"
+    choices = ["Enterprise", "Community"]
+    default = "Community"
+
+
     [install.init_main_permission]
     help.en = "If enabled, Metabase will be accessible by people who do not have an account. This can be changed later via the webadmin."
     help.fr = "Si cette case est cochée, Metabase sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
@@ -46,6 +56,12 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://downloads.metabase.com/v0.52.14.x/metabase.jar"
         sha256 = "e0e06bd17f2f48f28dbf3a4a583f2a8ce5ef0eac5be01b0a0c3039a6402488e5"
+        extract = false
+        rename = "metabase.jar"
+
+        [resources.sources.enterprise]
+        url = "https://downloads.metabase.com/enterprise/v1.52.14.x/metabase.jar"
+        sha256 = "4011d440404fc292e5aa7f5aebeb1eea4958226939b48eedeac952ecb0ecbb4c"
         extract = false
         rename = "metabase.jar"
 

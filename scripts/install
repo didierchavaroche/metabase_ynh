@@ -8,8 +8,11 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-ynh_setup_source --dest_dir="$install_dir"
-
+if [ "$version" = "Enterprise" ]; then
+  ynh_setup_source --dest_dir="$install_dir" --source_id="enterprise"
+elif [ "$version" = "Community" ]; then
+  ynh_setup_source --dest_dir="$install_dir" --source_id="main"
+fi
 chmod +x $install_dir/metabase.jar
 
 #=================================================
