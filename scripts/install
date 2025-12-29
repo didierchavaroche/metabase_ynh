@@ -3,12 +3,12 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-
 #=================================================
 # INSTALL JAVA SE 21 if chosen 
 #=================================================
 ynh_script_progression "checking up source if needed..."
-if [[ $JAVAVERSION == "JavaSE-21" ]]; then
+
+if [[ $javaversion == "JavaSE-21" ]]; then
     wget -N -O /tmp/jdk-21_linux-x64_bin.deb https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
     sudo dpkg -i /tmp/jdk-21_linux-x64_bin.deb
 fi
