@@ -42,9 +42,15 @@ ram.runtime = "50M"
     help.en = "Use Community Edition for the open source version (ARM, ARM64 and x86-64 support) or Enterprise Edition if you want to use a license (x86-64 and ARM64 support)"
     help.fr = "Utilisez Community Edition pour la version open-source (prise en charge ARM, ARM64 et x86-64) ou Édition Enterprise si vous souhaitez utiliser une licence (prise en charge x86-64 et ARM64)"
     type = "select"
-    choices = ["Enterprise", "Community"]
+    choices = ["Enterprise", "Community", "Latest"]
     default = "Community"
 
+    [install.javaversion]
+    ask.en = "Choose the java version you want to install"
+    ask.fr = "Choisissez la version de java que vous souhaitez installer"
+    type = "select"
+    choices = ["OpenJDK-11", "OpenJDK-17", "JavaSE-21" ]
+    default = "OpenJDK-17"
 
     [install.init_main_permission]
     help.en = "If enabled, Metabase will be accessible by people who do not have an account. This can be changed later via the webadmin."
@@ -65,6 +71,12 @@ ram.runtime = "50M"
         extract = false
         rename = "metabase.jar"
 
+        [resources.sources.latest]
+        url = "https://downloads.metabase.com/enterprise/v1.57.7.x/metabase.jar"
+        sha256 = "1483bcf71f17bafe1f47c8ec2fb62373b5dd6c7a6a0be445b7795989c281a24a"
+        extract = false
+        rename = "metabase.jar"
+
         # Disabled. Metabase releases its Community Edition as v0.x and Entreprise Edition as v1.x. What the heck.
         # autoupdate.strategy = "latest_github_release"
 
@@ -82,10 +94,11 @@ ram.runtime = "50M"
         "postgresql",
         "apt-transport-https"
     ]
+    
     packages_from_raw_bash = """
-    if [[ $YNH_DEBIAN_VERSION == "bullseye" ]]; then
+    if [[ $JAVAVERSION == "OpenJDK-11" ]]; then
         echo "openjdk-11-jre-headless";
-    elif [[ $YNH_DEBIAN_VERSION == "bookworm" ]]; then
+    elif [[ $JAVAVERSION == "OpenJDK-17" ]]; then
         echo "openjdk-17-jre-headless";
     fi
     """

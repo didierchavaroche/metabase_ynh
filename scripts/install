@@ -3,6 +3,16 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+
+#=================================================
+# INSTALL JAVA SE 21 if chosen 
+#=================================================
+ynh_script_progression "checking up source if needed..."
+if [[ $JAVAVERSION == "JavaSE-21" ]]
+    wget -N -O /tmp/jdk-21_linux-x64_bin.deb https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+    sudo dpkg -i /tmp/jdk-21_linux-x64_bin.deb
+fi
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -12,7 +22,10 @@ if [ "$version" = "Enterprise" ]; then
   ynh_setup_source --dest_dir="$install_dir" --source_id="enterprise"
 elif [ "$version" = "Community" ]; then
   ynh_setup_source --dest_dir="$install_dir" --source_id="main"
+elif [ "$version" = "Latest" ]; then
+  ynh_setup_source --dest_dir="$install_dir" --source_id="latest"
 fi
+
 chmod +x $install_dir/metabase.jar
 
 #=================================================

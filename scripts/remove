@@ -20,6 +20,15 @@ ynh_config_remove_nginx
 ynh_config_remove_logrotate
 
 #=================================================
+# INSTALL JAVA SE 21 if chosen 
+#=================================================
+ynh_script_progression "Removal source if needed..."
+if [[ $JAVAVERSION == "JavaSE-21" ]]
+    sudo apt purge openjdk-21-jdk
+    sudo dpkg -r jdk-21
+fi
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
