@@ -10,17 +10,4 @@ MB_DB_USER=__DB_USER__
 MB_DB_PASS=__DB_PWD__
 MB_DB_HOST=localhost
 MB_EMOJI_IN_LOGS=false
-MB_SITE_LOCALE=__LANGUAGE__
-MB_SITE_NAME=__NOMSITE__
-MB_SITE_URL=https://__DOMAIN____PATH__
-MB_LDAP_ENABLED=true
-MB_LDAP_HOST=localhost
-MB_LDAP_PORT=389
-MB_LDAP_USER_BASE='dc=yunohost,dc=org'
-MB_LDAP_BIND_DN='ou=users,dc=yunohost,dc=org'
-MB_LDAP_USER_FILTER='(&(|(objectclass=posixAccount))(uid=%uid)(permission=cn=__APP__.main,ou=permission,dc=yunohost,dc=org))'
-MB_LDAP_USER_PROVISIONING_ENABLED=true
-MB_LDAP_ATTRIBUTE_FIRSTNAME=displayName
-MB_LDAP_ATTRIBUTE_LASTNAME=uid
-MB_LDAP_ATTRIBUTE_EMAIL=mail
 # any other env vars you want available to Metabase

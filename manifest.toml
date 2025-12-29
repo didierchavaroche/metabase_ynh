@@ -5,7 +5,7 @@ name = "Metabase"
 description.en = "Web database management tool"
 description.fr = "Outil web de gestion des bases de données"
 
-version = "0.52.6~ynh2"
+version = "0.57.7~ynh2"
 
 maintainers = ["Colin Maudry"]
 
@@ -36,20 +36,6 @@ ram.runtime = "50M"
     type = "path"
     default = "/metabase"
 
-    [install.language]
-    ask.en = "Choose the application language"
-    ask.fr = "Choisissez la langue de l'application"
-    type = "select"
-    choices = ["en", "fr"]
-    default = "fr"
-
-
-    [install.nomsite]
-    ask.en = "Company or team name."
-    ask.fr = "Nom de l'entreprise ou de l'équipe."
-    type = "string"
-
-
     [install.init_main_permission]
     help.en = "If enabled, Metabase will be accessible by people who do not have an account. This can be changed later via the webadmin."
     help.fr = "Si cette case est cochée, Metabase sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
@@ -58,8 +44,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://downloads.metabase.com/v0.52.6/metabase.jar"
-        sha256 = "19d937dabb165cbe55de7371d20e7e13c4b15531b3ccd4a3fae7418fd7389413"
+        url = "https://downloads.metabase.com/v0.57.7/metabase.jar"
+        sha256 = "d7dfabc89c55d18a3757afce13509273781161e4c07fffe9e8fcd5893656bac0"
         extract = false
         rename = "metabase.jar"
 
