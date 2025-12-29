@@ -9,8 +9,8 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "checking up source if needed..."
 
 if [[ $javaversion == "JavaSE-21" ]]; then
-    wget -N -O /tmp/jdk-21_linux-x64_bin.deb https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
-    sudo dpkg -i /tmp/jdk-21_linux-x64_bin.deb
+    ynh_exec_and_print_stderr_only_if_error wget -N -O /tmp/jdk-21_linux-x64_bin.deb https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+    ynh_exec_and_print_stderr_only_if_error dpkg -i /tmp/jdk-21_linux-x64_bin.deb
 fi
 
 #=================================================
